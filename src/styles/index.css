@@ -1,0 +1,7 @@
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import DashboardView from '../views/DashboardView.vue'
-import NotFoundView from '../views/NotFoundView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import DashboardView from '../views/DashboardView.vue';
+import RecordsView from '../views/RecordsView.vue';
+import NotFoundView from '../views/NotFoundView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,11 +18,16 @@ const router = createRouter({
       component: DashboardView,
     },
     {
+      path:'/records',
+      name:'records',
+      component:RecordsView,
+    },
+    {
       path: '/:catchAll(.*)',
       name: 'not-found',
       component: NotFoundView,
     }
   ],
-})
+});
 
-export default router
+export default router;
