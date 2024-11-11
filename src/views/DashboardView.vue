@@ -3,18 +3,37 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRecordsStore } from '@/stores/useRecordsStore';
 import ComplianceForm from '@/components/ComplianceForm.vue';
+import { ElMessage } from 'element-plus';
 
 const router = useRouter();
 const recordsStore = useRecordsStore();
 
+const loading = ref(false);
+
 const handleFormSubmit = (formData) => {
-  const score = Math.random() * 100;
-  const explanation = score > 50 ? 'Passed compliance check' : 'Failed compliance check';
-  const date = new Date().toLocaleDateString();
-  recordsStore.addRecord({ ...formData, score, explanation, date });
-  recordsStore.selectRecord(recordsStore.records[recordsStore.records.length - 1]);
-  router.push('/records');
-  // todo: send data to backend
+  loading.value = true;
+  fetch('http://127.0.0.1:8080/compliance/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to evaluate compliance.');
+    }
+    return response.json();
+  }).then(data => {
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString();
+    recordsStore.addRecord({ ...formData, score: data.score, explanation: data.explanation, date, time });
+    recordsStore.selectRecord(recordsStore.records[0]);
+    router.push('/records');
+  }).catch((error) => {
+    ElMessage.error(error.message);
+  }).finally(() => {
+    loading.value = false;
+  });
 }
 </script>
 
@@ -25,7 +44,7 @@ const handleFormSubmit = (formData) => {
       <h2>Provide background information about the candidate and the job to evaluate your decision and justification</h2>
     </div>
     <div class="right">
-      <ComplianceForm @submitForm="handleFormSubmit" />
+      <ComplianceForm :loading @submitForm="handleFormSubmit" />
     </div>
   </main>
 </template>

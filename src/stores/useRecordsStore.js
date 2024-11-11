@@ -7,7 +7,7 @@ export const useRecordsStore = defineStore('records', {
   }),
   actions: {
     addRecord(record) {
-      this.records.push(record);
+      this.records.unshift(record);
     },
     selectRecord(record) {
       this.selectedRecord = record;

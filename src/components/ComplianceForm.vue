@@ -2,7 +2,9 @@
 import { ref, reactive } from 'vue';
 import { ElMessage } from 'element-plus';
 
-
+const props = defineProps({
+  loading: Boolean
+});
 const emit = defineEmits(['submitForm']);
 
 const formData = reactive({
@@ -48,9 +50,8 @@ const clearForm = () => {
 const submitForm = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      emit('submitForm', formData);
+      emit('submitForm', { ...formData });
       clearForm();
-      ElMessage.success('Form submitted successfully!');
     } else {
       ElMessage.error('Please fill in the fields.');
     }
@@ -60,7 +61,7 @@ const submitForm = () => {
 
 <template>
   <div class="form-container">
-    <el-form :model="formData" ref="formRef" label-width="150px" :rules>
+    <el-form :model="formData" ref="formRef" label-width="160px" :rules v-loading="loading">
       <el-form-item label="Candidate Name" prop="candidate_name">
         <el-input v-model="formData.candidate_name" placeholder="Enter candidate name"></el-input>
       </el-form-item>

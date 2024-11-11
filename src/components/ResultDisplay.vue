@@ -6,19 +6,19 @@ const recordsStore = useRecordsStore();
 
 <template>
   <div class="result-display">
-    <h3>Record Details</h3>
+    <h2>Record Details</h2>
 
     <div v-if="recordsStore.selectedRecord">
       <div class="ai-analysis">
-        <h4>Compliance Evaluation</h4>
+        <h3>Compliance Evaluation</h3>
         <p><strong>Score:</strong> {{ recordsStore.selectedRecord.score }}</p>
         <p><strong>Explanation:</strong> {{ recordsStore.selectedRecord.explanation }}</p>
       </div>
 
       <div class="record-details">
-        <h4>Form Submission Details</h4>
+        <h3>Form Submission Details</h3>
         <p><strong>Candidate Name:</strong> {{ recordsStore.selectedRecord.candidate_name }}</p>
-        <p><strong>Date:</strong> {{ recordsStore.selectedRecord.date }}</p>
+        <p><strong>Time:</strong> {{ recordsStore.selectedRecord.date + " " + recordsStore.selectedRecord.time }}</p>
         <p><strong>Resume:</strong> {{ recordsStore.selectedRecord.resume }}</p>
         <p><strong>Interview Transcript:</strong> {{ recordsStore.selectedRecord.interview_transcript }}</p>
         <p><strong>Job Description:</strong> {{ recordsStore.selectedRecord.job_description }}</p>
