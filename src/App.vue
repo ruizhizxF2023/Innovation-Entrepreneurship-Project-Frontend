@@ -5,10 +5,10 @@ import { RouterView } from 'vue-router';
 <template>
   <header>
     <router-link to="/">
-      <h1>HR Hiring Compliance Dashboard</h1>
+      <h1>Recruitment Fairness Analyzer</h1>
     </router-link>
     <nav>
-      <router-link to="/records">Records</router-link>
+      <router-link to="/records">History</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
     </nav>
   </header>

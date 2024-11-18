@@ -6,7 +6,7 @@ const recordsStore = useRecordsStore();
 
 <template>
   <div class="result-display">
-    <h2>Record Details</h2>
+    <h2>Record</h2>
 
     <div v-if="recordsStore.selectedRecord">
       <div class="ai-analysis">
@@ -37,7 +37,9 @@ const recordsStore = useRecordsStore();
 <style scoped>
 .result-display {
   flex: 1;
-  padding: 20px;
+  padding: 0 20px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .ai-analysis {

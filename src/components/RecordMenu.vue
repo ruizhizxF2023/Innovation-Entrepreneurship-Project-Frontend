@@ -10,7 +10,7 @@ const selectRecord = (record) => {
 
 <template>
   <div class="record-menu">
-    <h3>Record List</h3>
+    <h3>Evaluation History</h3>
     <div v-if="recordsStore.records.length > 0" class="menu-items">
       <div
         v-for="record in recordsStore.records"
@@ -22,16 +22,18 @@ const selectRecord = (record) => {
       </div>
     </div>
     <div v-else>
-      <p>No record available.</p>
+      <p>No History.</p>
     </div>
   </div>
 </template>
 
 <style scoped>
 .record-menu {
-  width: 25%;
+  width: 20%;
   padding-right: 20px;
   border-right: 1px solid #ccc;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .menu-items {

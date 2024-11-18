@@ -4,7 +4,7 @@
 
 <template>
   <main>
-    <h1>HR Hiring Compliance Dashboard</h1>
+    <h1>Recruitment Fairness Analyzer</h1>
   </main>
 </template>
 

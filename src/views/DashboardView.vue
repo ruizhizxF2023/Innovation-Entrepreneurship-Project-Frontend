@@ -40,8 +40,8 @@ const handleFormSubmit = (formData) => {
 <template>
   <main class="dashboard-container">
     <div class="left">
-      <h1>Decision Compliance Evaluation</h1>
-      <h2>Provide background information about the candidate and the job to evaluate your decision and justification</h2>
+      <h1>Decision Evaluation</h1>
+      <h2>Provide information about the candidate and the job to evaluate your decision's fairness and compliance with company value</h2>
     </div>
     <div class="right">
       <ComplianceForm :loading @submitForm="handleFormSubmit" />
@@ -82,5 +82,10 @@ h1 {
   color: #1cb4f4;
   font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
 }
 </style>
